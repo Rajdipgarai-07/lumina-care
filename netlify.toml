@@ -1,0 +1,22 @@
+[build]
+  command = "vite build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify Functions for API routes
+[functions]
+  directory = "netlify/functions"
+
+# Redirect API calls to Netlify Functions
+[[redirects]]
+  from = "/api/gemini/*"
+  to = "/.netlify/functions/gemini"
+  status = 200
+
+# SPA fallback — serve index.html for all non-file routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
