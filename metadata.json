@@ -1,0 +1,6 @@
+{
+  "name": "Lumina Care",
+  "description": "A Flutter-inspired Mental Health Tracker App for Students featuring mood tracking, stress analysis, lifestyle habits, journaling, and Riverpod state architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
