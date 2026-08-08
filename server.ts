@@ -15,6 +15,17 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// Force correct JavaScript and CSS Content-Type headers regardless of Windows OS registry defaults
+app.use((req, res, next) => {
+  const urlPath = req.path || req.url.split('?')[0];
+  if (/\.(js|mjs|ts|tsx|jsx)$/i.test(urlPath)) {
+    res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+  } else if (/\.css$/i.test(urlPath)) {
+    res.setHeader('Content-Type', 'text/css; charset=utf-8');
+  }
+  next();
+});
+
 // Initialize Gemini Client lazily or gracefully
 function getGeminiClient() {
   const apiKey = process.env.GEMINI_API_KEY;
